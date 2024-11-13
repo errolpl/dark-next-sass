@@ -1,3 +1,3 @@
 export const Banner = () => {
-  return null;
+  return "banner";
 };
