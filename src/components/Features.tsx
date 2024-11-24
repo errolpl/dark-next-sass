@@ -1,3 +1,8 @@
+import { title } from "process";
+import EcosystemIcon from "../assets/icons/ecosystem.svg";
+import { motion } from "framer-motion";
+import { Feature } from "./Feature";
+
 const features = [
   {
     title: "Integration Ecosystem",
@@ -17,5 +22,24 @@ const features = [
 ];
 
 export const Features = () => {
-  return null;
+  return (
+    <div className="bg-black text-white py-[72px] sm:py-24">
+      <div className="container">
+        <h2 className="text-center font-bold text-5xl sm:text-6xl tracking-tighter">
+          Everything you need
+        </h2>
+        <div className="max-w-xl mx-auto">
+          <p className="text-center mt-5 text-xl text-white/70">
+            Celebrate the joy of accomplishment with an app designed to track
+            your progress, motivate your efforts, and celebrate your successes.
+          </p>
+        </div>
+        <div className="mt-16 flex flex-col sm:flex-row sm:flex-1 gap-5">
+          {features.map(({ title, description }) => (
+            <Feature title={title} description={description} key={title} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
