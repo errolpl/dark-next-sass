@@ -14,6 +14,7 @@ export const Feature = ({
   const offsetY = useMotionValue(-100);
   const maskImage = useMotionTemplate`radial-gradient(100px 100px at ${offsetX}px ${offsetY}px, black, transparent)`;
   const border = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     function updateMousePosition(e: MouseEvent) {
       if (!border.current) return;
@@ -21,12 +22,13 @@ export const Feature = ({
       offsetX.set(e.x - borderRect?.x);
       offsetY.set(e.y - borderRect?.y);
     }
+
     window.addEventListener("mousemove", updateMousePosition);
 
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
     };
-  }, []);
+  }, [offsetX, offsetY]); // Add these dependencies
 
   return (
     <div className="border border-white/30 px-5 py-10 text-center rounded-xl sm:flex-1 relative">
